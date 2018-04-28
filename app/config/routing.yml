@@ -1,0 +1,72 @@
+#default
+home:
+    path:     /
+    defaults: { _controller: AppBundle:Default:home }
+
+about:
+    path:     /concept
+    defaults: { _controller: AppBundle:Default:about }
+
+#user
+user_create:
+    path:     /inscription
+    defaults: { _controller: AppBundle:User:create }
+
+connect:
+    path:   /connexion
+    defaults: { _controller: AppBundle:User:connect}
+
+logout:
+    path:   /deconnexion
+
+user_details:
+    path:   /mon-compte
+    defaults: { _controller:  AppBundle:User:compte}
+
+#article
+article_add:
+    path:   /ajouter-article
+    defaults: { _controller: AppBundle:Article:add}
+
+article_detail:
+    path:   /article/{slug}
+    defaults: { _controller: AppBundle:Article:detail}
+
+article_modifier:
+    path:   /modifier-mon-article/{slug}
+    defaults: { _controller:  AppBundle:Article:modifier}
+
+#action
+action_achat:
+    path:   /achat/{slug}
+    defaults: { _controller: AppBundle:Action:achat }
+
+action_location:
+    path:   /location/{slug}
+    defaults: { _controller: AppBundle:Action:location }
+    
+action_validation:
+    path:   /valider-une-demande/{slug}/{etat}
+    defaults: { _controller: AppBundle:Action:validation }
+
+action_commencer:
+    path:   /commencer/{slug}
+    defaults: { _controller: AppBundle:Action:commencement }
+
+#admin
+admin_acc_article:
+    path:   /accepter-un-article/{slug}
+    defaults: { _controller: AppBundle:Admin:article}
+
+admin_acc_membre:
+    path:   /accepter-un-membre/{membre}
+    defaults: { _controller: AppBundle:Admin:membre}
+
+admin_home:
+    path:   /admin
+    defaults: { _controller: AppBundle:Admin:home }
+
+#paiement
+paiement:
+    path:   /paiement
+    defaults: { _controller:  AppBundle:Paiement:paiement }

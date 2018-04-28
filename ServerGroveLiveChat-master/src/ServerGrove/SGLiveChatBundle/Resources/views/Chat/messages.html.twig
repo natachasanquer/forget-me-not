@@ -1,0 +1,21 @@
+{% block content %}
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+    {% for message in messages %}
+    {% set sender = message.getSender() %}
+    {% if sender.getKind() eq "Operator" %}
+    <tr valign="top" style="background-color: #F8F8F8;">
+    {% else %}
+    <tr valign="top">
+        {% endif %}
+        <td width="70">
+            <div class="name {{sender.getKind()|lower}}">
+                {{sender.getKind()}}:
+            </div>
+        </td>
+        <td>
+            {{message.getContent()}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

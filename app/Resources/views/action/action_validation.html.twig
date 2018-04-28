@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>{{ action.article.titre }}</h1>
+    <img src="{{ asset("images/articles/"~ action.article.images[0].urlimage ) }}"  width="100%" height="100%">
+
+    <div class="presentation article">
+        Date de début : {{ action.dateDebut|date("d/m/Y") }}
+
+        Date de Fin : {{ action.dateFin|date("d/m/Y") }}
+
+    </div>
+
+    <a class="btn" href="{{ path("action_validation",{"slug": action.slug, "etat": "valide"}) }}">Accepter</a>
+    <a class="btn" href="{{ path("action_validation",{"slug": action.slug, "etat": "refuse"}) }}">Refuser</a>
+
+
+
+{% endblock %}
+
+{% block titre %}
+
+{% endblock %}

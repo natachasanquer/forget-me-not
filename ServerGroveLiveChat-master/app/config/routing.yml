@@ -1,0 +1,2 @@
+sglivechat:
+  resource: @SGLiveChatBundle/Resources/config/routing.yml

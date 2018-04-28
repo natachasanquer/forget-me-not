@@ -1,0 +1,58 @@
+
+
+.gerer_compte{
+    padding-right: 1em;
+}
+
+.brand{
+    flex: auto;
+    padding-left: 1em;
+}
+
+.entete{
+    display: flex;
+    padding-top: 1em;
+}
+a.btn{
+    color:#FFFCFF;
+    background:#4AAD52;
+}
+
+body{
+    background-color:#FFFCFF;
+}
+
+#articles{
+    display: flex;
+    flex-wrap: wrap;
+    clear: both;
+}
+
+#image{
+    display: flex;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+img:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+a.btn-saumon{
+    background:#F48668;
+}
+
+.container-img{
+    border: black;
+}
+
+h6{
+    font-size: 10px;
+}
+
+.form-recherche{
+    display: inline;
+    flex-wrap: wrap;
+    float: left;
+}

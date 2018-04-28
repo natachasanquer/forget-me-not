@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+/Users/king/www/projet/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1744246985.index
+4285566557.index
+2852147421.index
+724944210.index
+4224582600.index
+523908286.index

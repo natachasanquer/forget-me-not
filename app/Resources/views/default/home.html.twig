@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="form-recherche">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">Rechercher</button>
+        {{ form_end(form) }}
+    </div>
+
+    <div id="articles" class="w3-row-padding w3-padding-16 w3-center">
+        {% for article in articles  %}
+            {{ include('container_image.html.twig') }}
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block titre %}
+
+{% endblock %}

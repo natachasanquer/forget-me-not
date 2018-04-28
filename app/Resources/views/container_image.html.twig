@@ -1,0 +1,12 @@
+<div id="container_image" class="w3-quarter" style="width:20%" style="height: 10%">
+    <div id="image" class="banniere" >
+        <a href="{{ path("article_detail", {"slug": article.slug}) }}" >
+            {% for image in article.images %}
+                <img src="{{ asset("images/articles/"~ image.urlImage ) }}" width="100%" height="100%"/>
+            {% endfor %}
+        </a>
+    </div>
+    <a href="{{ path("article_detail", {"slug": article.slug}) }}">{{ article.titre }}</a>
+    <h6>{{ article.taille.libelle }}</h6>
+
+</div>

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <div id="articles" class="w3-row-padding w3-padding-16 w3-center">
+        {% for action in demandes  %}
+            {% if action.estValide %}
+            
+            {% else %}
+            	<h1>Ils m'ont contacté</h1>
+            	
+                <div id="container_image" class="w3-quarter" style="width:25%" style="height: 10%">
+                    <div id="image" class="banniere" >
+                        <img src="{{ asset("images/articles/"~ action.article.images[0].urlimage ) }}" width="100%" height="100%"/>
+                    </div>
+                    <a href="{{ path("action_validation",{"slug": action.slug, "etat": "attente"}) }}" >{{ action.article.titre }}</a>
+                </div>
+            {% endif %}
+            
+            {% if (action.etat=='attente') and (action.estValide) and (action.slug) %}
+				<div id="container_image" class="w3-quarter" style="width:25%" style="height: 10%">
+                    <div id="image" class="banniere" >
+                        <img src="{{ asset("images/articles/"~ action.article.images[0].urlimage ) }}" width="100%" height="100%"/>
+                    </div>
+	                    <a href="{{ path("action_commencer",{"slug": action.slug }) }}" >Commencer l'état des lieux avec l'emprunteuse !</a>
+                    </div>
+            {% endif %}
+            
+        {% endfor %}
+    </div>
+
+
+    <h1>Mes articles</h1>
+    <div id="articles" class="w3-row-padding w3-padding-16 w3-center">
+        {% for article in articles  %}
+            {{ include('container_image.html.twig') }}
+
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+
+{% block titre %}
+
+{% endblock %}

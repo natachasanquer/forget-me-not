@@ -1,0 +1,34 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        our_db_provider:
+            entity:
+                class: AppBundle\Entity\User
+                property: username
+
+    firewalls:
+        main:
+            pattern:    ^/
+            provider:   our_db_provider
+            anonymous:  ~
+            form-login:
+                login_path: connect
+                check_path: connect
+            logout:
+                path: logout
+                target: home
+            logout_on_user_change: true
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+    encoders:
+        AppBundle\Entity\User:
+            algorithm:  bcrypt
+            cost:       13
+
+

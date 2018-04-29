@@ -533,4 +533,13 @@ class User implements UserInterface
     {
         $this->image->removeElement($image);
     }
+    
+    /**
+     * Add points
+     * 
+     * @param nbPoints
+     */
+    public function addPoints(int $nbPoints){
+        $this->points = $this->points + $nbPoints;
+    }
 }

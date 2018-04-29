@@ -27,6 +27,13 @@ class Type
      * @ORM\Column(name="libelle", type="string", length=50, unique=true)
      */
     private $libelle;
+    
+    /**
+     * @var int
+     * 
+     * @ORM\Column(name="points",type="integer")
+     */
+    private $points;
 
     /**
      * @var Article

@@ -509,4 +509,37 @@ class User implements UserInterface
     {
         return $this->phoneNumber;
     }
+
+    /**
+     * Add image
+     *
+     * @param \AppBundle\Entity\Image $image
+     *
+     * @return User
+     */
+    public function addImage(\AppBundle\Entity\Image $image)
+    {
+        $this->image[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \AppBundle\Entity\Image $image
+     */
+    public function removeImage(\AppBundle\Entity\Image $image)
+    {
+        $this->image->removeElement($image);
+    }
+    
+    /**
+     * Add points
+     * 
+     * @param nbPoints
+     */
+    public function addPoints(int $nbPoints){
+        $this->points = $this->points + $nbPoints;
+    }
 }

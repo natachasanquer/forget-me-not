@@ -27,6 +27,13 @@ class Type
      * @ORM\Column(name="libelle", type="string", length=50, unique=true)
      */
     private $libelle;
+    
+    /**
+     * @var int
+     * 
+     * @ORM\Column(name="points",type="integer")
+     */
+    private $points;
 
     /**
      * @var Article
@@ -107,5 +114,29 @@ class Type
     public function getArticles()
     {
         return $this->articles;
+    }
+
+    /**
+     * Set points
+     *
+     * @param integer $points
+     *
+     * @return Type
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+
+        return $this;
+    }
+
+    /**
+     * Get points
+     *
+     * @return integer
+     */
+    public function getPoints()
+    {
+        return $this->points;
     }
 }

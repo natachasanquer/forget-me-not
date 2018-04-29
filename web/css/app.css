@@ -56,3 +56,9 @@ h6{
     flex-wrap: wrap;
     float: left;
 }
+
+.conteneur_article{
+	display: flex;
+    flex-wrap: wrap;
+    clear: both;
+}

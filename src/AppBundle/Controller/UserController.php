@@ -48,7 +48,7 @@ class UserController extends Controller
             $user->setPassword($hash);
             $user->setEstAccepte(false);
             $user->setDateCreation(new \DateTime());
-            $user->setPoints(10);
+            $user->setPoints(50);
             $user->setPorteFeuille(0);
             $user->setRoles("ROLE_USER");
 

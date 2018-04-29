@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Action;
 use AppBundle\Entity\Article;
-use AppBundle\Entity\EtatLieu;
 use AppBundle\Entity\TypeAction;
 use Cocur\Slugify\Slugify;
 use AppBundle\Form\EtatLieuType;
@@ -31,7 +30,7 @@ class ActionController extends Controller
         $form->handleRequest($request);
 
         $slugify = new Slugify();
-        $slug=$slugify->slugify($article->getTitre() .'-'. $action->getId() );
+        $slug=$slugify->slugify($article->getTitre() .'-'. $action->getId());
         $action->setSlug($slug);
 
         if($form->isSubmitted() && $form->isValid()){

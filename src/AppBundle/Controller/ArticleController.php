@@ -17,11 +17,13 @@ class ArticleController extends Controller
 {
     public function addAction(Request $request)
     {
+        $user = $this->getUser();
+        
+        $user->addPoints(10);
+        
         $article = new Article();
         $articleForm = $this->createForm(ArticleType::class,$article);
 
-
-        
         $articleForm->handleRequest($request);
 
         if($articleForm->isSubmitted() && $articleForm->isValid()){
@@ -44,7 +46,7 @@ class ArticleController extends Controller
             $article->addImage($image);
 
             $article->setDateCreation(new \DateTime());
-            $article->setUser($this->getUser());
+            $article->setUser($user);
             $article->setEstAccepte(false);
             $article->setEstArchive(false);
 
@@ -56,6 +58,7 @@ class ArticleController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($image);
             $em->persist($article);
+            $em->persist($user);
             $em->flush();
 
             $this->addFlash("success","Article ajouté !");

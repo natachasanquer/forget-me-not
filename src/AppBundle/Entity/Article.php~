@@ -20,7 +20,7 @@ class Article
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
      * @var int
      *
@@ -506,4 +506,5 @@ class Article
     {
         return $this->images;
     }
+
 }

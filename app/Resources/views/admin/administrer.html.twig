@@ -6,16 +6,16 @@
         <h1>Accepter des membres</h1>
 
         {% for membre in membres %}
-        	
-        	
-			<li>{{ membre.username }} {{ membre.mail }} {{ membre.username }}</li>
-			{% if membre.image %}
-				<img src="{{ asset("images/users/"~ membre.image.images[0].urlimage ) }}">
-			{% endif %}
-			
-			<a href="{{ path("admin_acc_membre", {"membre": membre.id}) }}">Accepter</a>
+            
+            
+            <li>{{ membre.username }} {{ membre.mail }} {{ membre.username }}</li>
+            {% if membre.image %}
+                <img src="{{ asset("images/users/"~ membre.image.images[0].urlimage ) }}">
+            {% endif %}
+            
+            <a href="{{ path("admin_acc_membre", {"membre": membre.id}) }}">Accepter</a>
 
-        	
+            
          
         {% endfor %}
 

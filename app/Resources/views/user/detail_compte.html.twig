@@ -7,8 +7,8 @@
             {% if action.estValide %}
             
             {% else %}
-            	<h1>Ils m'ont contacté</h1>
-            	
+                <h1>Ils m'ont contacté</h1>
+                
                 <div id="container_image" class="w3-quarter" style="width:25%" style="height: 10%">
                     <div id="image" class="banniere" >
                         <img src="{{ asset("images/articles/"~ action.article.images[0].urlimage ) }}" width="100%" height="100%"/>
@@ -18,11 +18,11 @@
             {% endif %}
             
             {% if (action.etat=='attente') and (action.estValide) and (action.slug) %}
-				<div id="container_image" class="w3-quarter" style="width:25%" style="height: 10%">
+                <div id="container_image" class="w3-quarter" style="width:25%" style="height: 10%">
                     <div id="image" class="banniere" >
                         <img src="{{ asset("images/articles/"~ action.article.images[0].urlimage ) }}" width="100%" height="100%"/>
                     </div>
-	                    <a href="{{ path("action_commencer",{"slug": action.slug }) }}" >Commencer l'état des lieux avec l'emprunteuse !</a>
+                        <a href="{{ path("action_commencer",{"slug": action.slug }) }}" >Commencer l'état des lieux avec l'emprunteuse !</a>
                     </div>
             {% endif %}
             

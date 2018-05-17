@@ -1,0 +1,67 @@
+$blue: #53d8fb;
+$yellow: #fcde00;
+$white: #FFFCFF;
+$saumon: #F48668;
+
+.gerer_compte{
+    padding-right: 1em;
+}
+
+.brand{
+    flex: auto;
+    padding-left: 1em;
+}
+
+.entete{
+    display: flex;
+    padding-top: 1em;
+}
+a.btn{
+    color: $white;
+    background: $yellow;
+}
+
+body{
+    background-color: $white;
+}
+
+#articles{
+    display: flex;
+    flex-wrap: wrap;
+    clear: both;
+}
+
+#image{
+    display: flex;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+img:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+a.btn-saumon{
+    background: $saumon;
+}
+
+.container-img{
+    border: black;
+}
+
+h6{
+    font-size: 10px;
+}
+
+.form-recherche{
+    display: inline;
+    flex-wrap: wrap;
+    float: left;
+}
+
+.conteneur_article{
+    display: flex;
+    flex-wrap: wrap;
+    clear: both;
+}

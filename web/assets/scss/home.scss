@@ -1,0 +1,13 @@
+#recherche {
+    border-bottom: 1px solid #e9ecef;
+}
+
+#articles {
+    padding-top: 15px;
+
+    .card {
+        .card-title {
+            color: $secondary;
+        }
+    }
+}

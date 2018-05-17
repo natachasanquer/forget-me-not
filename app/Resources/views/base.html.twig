@@ -9,41 +9,13 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-    <div class="container">
-        <div class="entete">
+        {% include 'navbar.html.twig' %}
 
-            <div class="brand">
-                <a class="btn" href="{{ path('home') }}">Accueil</a>
-            </div>
-
-            <ul class="gerer_compte">
-                {% if app.user  %}
-                    {% if app.user.estAccepte %}
-                        <a class="btn" href="{{ path('article_add') }}">Ajouter un article !</a>
-                        <a class="btn" href="{{ path('user_details') }}">Mon compte</a>
-                    {% endif %}
-                    {% if "ROLE_ADMIN" in app.user.roles %}
-                        <a class="btn btn-admin" href="{{ path('admin_home') }}">Acces ADMIN</a>
-                    {% endif %}
-                    
-                    <a class="btn" href="{{ path('logout') }}">Se déconnecter</a>
-                    
-                {% else %}
-                    <a class="btn" href="{{ path('user_create') }}">S'inscrire</a>
-                    <a class="btn" href="{{ path('connect') }}">Se connecter</a>
-                {% endif %}
-
-            </ul>
-
+        <div class="container-fluid">
+            {% block main %}{% endblock %}
         </div>
 
-
-
-    {% block main %}{% endblock %}
-
-    <script src="{{ asset('public/build/app.js') }}"></script>
-    {% block javascripts %}{% endblock %}
-
-    </div>
+        <script src="{{ asset('public/build/app.js') }}"></script>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

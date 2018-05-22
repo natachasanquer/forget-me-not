@@ -4,20 +4,22 @@
 
 
 {% block main %}
-
-
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     <form action="{{ path('connect') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        <div class="form-group">
+            <label for="username" class="form-control-label required">Pseudo</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" />
+        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
+        <div class="form-group">
+            <label for="password" class="form-control-label required">Mot de passe</label>
+            <input type="password" id="password" name="_password" class="form-control" />
+        </div>
 
-        <button class="btn btn-primary" type="submit">connect</button>
+        <button class="btn btn-primary" type="submit">C'est parti !</button>
     </form>
 
 {% endblock %}

@@ -1,58 +1,79 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <div class="conteneur_article">
-    
-        <div class='img'>
-            {% for image in article.images %}
-                <img src="{{ asset("images/articles/"~ image.urlImage ) }}" width="100%" height="100%"/>
-            {% endfor %}
-        </div>
-        
-        <div class='presentation_article'>
-            <div>
-                <h2>{{ article.type.points }} my</h2>
-            </div>
-            
-            <div>
-                <h3>Quartier : {{ article.user.localite }}</h3>
-            </div>
-            
-            <div>
-                <h3>Marque : {{ article.marque }}</h3>
-            </div>
-            
-            <div>
-                <h3>Taille : {{ article.taille.libelle }}</h3>  
-            </div>
-            
-            <div>
-                <h3>Prix et caution : {{ article.caution }}</h3>
-            </div>
-            
-            <div>
-                <img src="{{ asset("images/users/"~article.user.image[0].urlImage ) }}" width="10%" height="10%"/>
-                <div>
-                    {{ article.user.username }}
+    <div class="article-detail">
+
+        {% if app.user.estAccepte and article.user == app.user %}
+            <nav class="navbar fixed-bottom navbar-light bg-light">
+                <a class="btn" href="{{ path("article_modifier", {"slug": article.slug }) }}">Modifier</a>
+            </nav>
+        {% endif %}
+
+        <div class="row">
+            {% if article.images|length == 1 %}
+                <div class="pictures col-md-6 text-center mb-2">
+                    <div class="main-picture">
+                        <img src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}" class="img-fluid" alt="Photo de \"{{ article.titre }}\"" />
+                    </div>
+                </div>
+            {% elseif article.images|length == 2 %}
+                <div class="pictures col-md-6 row mb-2">
+                    <div class="main-picture col-md-8">
+                        <img src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}" class="img-fluid img-thumbnail" alt="Photo de \"{{ article.titre }}\"" />
+                    </div>
+                    <div class="other-pictures col-md-4">
+                        <img src="{{ asset("images/articles/"~ article.images[1].urlImage ) }}" class="img-fluid img-thumbnail" alt="Photo de \"{{ article.titre }}\"" />
+                    </div>
+                </div>
+            {% else %}
+                <div class="pictures col-md-6 row mb-2">
+                    <div class="main-picture col-md-6">
+                        <img src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}" class="img-fluid img-thumbnail" alt="Photo de \"{{ article.titre }}\"" />
+                    </div>
+                    <div class="other-pictures col-md-6 row">
+                        {% for image in article.images %}
+                            <div class="col-md-6">
+                                <img src="{{ asset("images/articles/"~ image.urlImage ) }}" class="img-fluid img-thumbnail" alt="Photo de \"{{ article.titre }}\"" />
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="article-info col-md-6 text-center text-md-left mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-uppercase"><small>{{ article.titre }} • {{ article.marque }}</small></h6>
+                        <h5 class="card-title mb-2 display-4">
+                            {{ article.type.points }} my
+                            {% if app.user.estAccepte and article.user != app.user %}
+                                <a class="btn" href="{{ path("action_location", {"slug": article.slug }) }}">Louer</a>
+                                {% if article.aVendre %}<a class="btn" href="{{ path("action_achat", {"slug": article.slug }) }}">Acheter</a>{% endif %}
+                            {% endif %}
+                        </h5>
+                        <h6 class="card-title mb-2">Caution : {{ article.caution }}€</h6>
+                        <p class="card-text text-muted">{{ article.description }}</p>
+                        <hr />
+                        <div class="row">
+                            <p class="card-text offset-sm-2 col-sm-4 offset-md-0"><span class="oi oi-people"></span> {{ article.taille.libelle }}</p>
+                            <p class="card-text col-sm-4"><span class="oi oi-map-marker"></span> {{ article.user.localite }}</p>
+                        </div>
+                    </div>
+                    <div class="card-footer row align-items-center m-0">
+                        <div class="mr-2" style="flex: 0 0 50px">
+                            <img src="{{ asset("images/users/"~article.user.image[0].urlImage ) }}" class="rounded img-fluid" />
+                        </div>
+                        <div class="" style="flex: 1">
+                            <h6>{{ article.user.username }}</h6>
+                            <p class="card-text"><span class="oi oi-star"></span><span class="oi oi-star"></span><span class="oi oi-star"></span></p>
+                        </div>
+                        <div class="text-right" style="flex: 1">
+                            <button class="btn btn-primary">Contacter</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            {% if app.user.estAccepte %}
-                {% if article.user == app.user %}
-                    <a class="btn" href="{{ path("article_modifier", {"slug": article.slug }) }}">Modifier</a>
-                {% else %}
-                    <a class="btn" href="{{ path("action_location", {"slug": article.slug }) }}">Louer</a>
-                    {% if article.aVendre %}
-                        <a class="btn" href="{{ path("action_achat", {"slug": article.slug }) }}">Acheter</a>
-                    {% endif %}
-                {% endif %}
-            {% else %}
-                <a class="btn" href="{{ path('user_create') }}">S'inscrire</a>
-                <a class="btn" href="{{ path('connect') }}">Se connecter</a>
-            {% endif %}
         </div>
     </div>
-
 {% endblock %}
 
 {% block titre %}

@@ -1,4 +1,4 @@
-<div class="card text-center p-1">
+<div class="card text-center">
     <a href="{{ path("article_detail", {"slug": article.slug}) }}">
         <img class="card-img" src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}" alt="Photo de \"{{ article.titre }}\"" style="object-fit: contain; max-height: 200px;" />
     </a>

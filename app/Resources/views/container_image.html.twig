@@ -1,14 +1,36 @@
+{% if canAccept is not defined %}
+    {% set canAccept = false %}
+{% endif %}
+{% if hasLink is not defined %}
+    {% set hasLink = true %}
+{% endif %}
+
 <div class="card text-center">
-    <a href="{{ path("article_detail", {"slug": article.slug}) }}">
-        <img class="card-img" src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}" alt="Photo de \"{{ article.titre }}\"" style="object-fit: contain; max-height: 200px;" />
-    </a>
+    {% if hasLink %}
+        <a href="{{ path("article_detail", {"slug": article.slug}) }}">
+            <img class="card-img" src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}" alt="Photo de \"{{ article.titre }}\"" class="card-img" />
+        </a>
+    {% else %}
+        <img class="card-img" src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}" alt="Photo de \"{{ article.titre }}\"" class="card-img" />
+    {% endif %}
 
     <div class="card-body">
-        <a href="{{ path("article_detail", {"slug": article.slug}) }}">
+        {% if hasLink %}
+            <a href="{{ path("article_detail", {"slug": article.slug}) }}">
+                <h5 class="card-title">
+                    {{ article.titre }}
+                </h5>
+            </a>
+        {% else %}
             <h5 class="card-title">
                 {{ article.titre }}
             </h5>
-        </a>
+        {% endif %}
         <p class="card-text">{{ article.taille.libelle }}</p>
     </div>
+    {% if canAccept %}
+        <div class="card-footer">
+            <a href="{{ path("admin_acc_article", {"slug": article.slug}) }}">Accepter</a>
+        </div>
+    {% endif %}
 </div>

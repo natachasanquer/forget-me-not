@@ -17,6 +17,11 @@ body {
         margin-bottom: 56px;
     }
 
+    img.card-img {
+        object-fit: contain;
+        max-height: 200px;
+    }
+
     img:hover {
         opacity: 0.5;
         filter: alpha(opacity=50);

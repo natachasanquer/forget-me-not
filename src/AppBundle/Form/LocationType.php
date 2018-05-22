@@ -17,11 +17,13 @@ class LocationType extends AbstractType
         $builder
             ->add('dateDebut', DateType::class,[
                 'label' => 'Date de Debut',
-                'required' => true
+                'required' => true,
+                'format' => 'ddMMyyyy'
 
             ])
             ->add('dateFin', DateType::class,[
                 'widget' => 'choice',
+                'format' => 'ddMMyyyy'
             ]);
 
     }

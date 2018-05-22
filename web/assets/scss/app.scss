@@ -1,0 +1,38 @@
+$blue: #53d8fb;
+$yellow: #fcde00;
+$white: #FFFCFF;
+$saumon: #F48668;
+
+$primary: $yellow;
+$secondary: $blue;
+
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: $white;
+
+    .container-fluid {
+        margin-top: 56px;
+        padding-top: 15px;
+        margin-bottom: 56px;
+    }
+
+    img.card-img {
+        object-fit: contain;
+        max-height: 200px;
+    }
+
+    img:hover {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+    }
+
+    a.btn{
+        color: $white;
+        background: $yellow;
+    }
+}
+
+@import "home.scss";
+@import "detail-article.scss";
+

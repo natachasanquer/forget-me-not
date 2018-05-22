@@ -31,10 +31,11 @@
 
 
     <h1>Mes articles</h1>
-    <div id="articles" class="w3-row-padding w3-padding-16 w3-center">
+    <div id="articles" class="row">
         {% for article in articles  %}
-            {{ include('container_image.html.twig') }}
-
+            <div class="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-2">
+                {{ include('container_image.html.twig') }}
+            </div>
         {% endfor %}
     </div>
 

@@ -16,3 +16,6 @@ src/**/*.php~
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/web/node_modules/
+/web/public/build/*
+!/web/public/build/.gitkeep

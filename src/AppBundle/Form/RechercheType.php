@@ -22,14 +22,16 @@ class RechercheType extends AbstractType
         $builder
             ->add('type',EntityType::class,[
                 'class' => Type::class,
-                "choice_label" => 'libelle',
+                'choice_label' => 'libelle',
                 'required' => false,
+                'placeholder' => 'Choisir un type',
             ])
             ->add('taille', EntityType::class, [
                 'label'=> 'Taille',
                 'class' => Taille::class,
-                "choice_label" => 'libelle',
+                'choice_label' => 'libelle',
                 'required' => false,
+                'placeholder' => 'Choisir une taille',
 
             ])
             ->add('marque', null, [

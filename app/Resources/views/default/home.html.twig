@@ -1,16 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <div class="form-recherche">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn">Rechercher</button>
-        {{ form_end(form) }}
-    </div>
+    {{ form_start(form, {'attr': {'id': 'recherche'}}) }}
+        <div class="form-row align-items-center">
+            <div class="form-group col-md-3 col-lg-2">
+                {{ form_label(form.type, 'Type', {'label_attr': {'class': 'd-md-none'}}) }}
+                {{ form_widget(form.type) }}
+            </div>
+            <div class="form-group col-md-3 col-lg-2">
+                {{ form_label(form.taille, 'Taille', {'label_attr': {'class': 'd-md-none'}}) }}
+                {{ form_widget(form.taille, {'attr': {'placeholder': 'Taille'}}) }}
+            </div>
+            <div class="form-group col-md-3 col-lg-2">
+                {{ form_label(form.marque, 'Marque', {'label_attr': {'class': 'd-md-none'}}) }}
+                {{ form_widget(form.marque, {'attr': {'placeholder': 'Marque'}}) }}
+            </div>
+            <div class="form-group col-md-3 col-lg-2">
+                {{ form_label(form.description, 'Description', {'label_attr': {'class': 'd-md-none'}}) }}
+                {{ form_widget(form.description, {'attr': {'placeholder': 'Description'}}) }}
+            </div>
+            <div class="form-group offset-md-8 col-md-2 offset-lg-0">
+                {{ form_label(form.aVendre, 'A vendre') }}
+                {{ form_widget(form.aVendre) }}
+            </div>
 
-    <div id="articles" class="w3-row-padding w3-padding-16 w3-center">
+            <button class="btn btn-primary col-md-2 mb-3">Rechercher</button>
+        </div>
+    {{ form_end(form) }}
+
+    <div id="articles" class="row">
         {% for article in articles  %}
-            {{ include('container_image.html.twig') }}
+            <div class="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-2">
+                {{ include('container_image.html.twig') }}
+            </div>
         {% endfor %}
     </div>
 

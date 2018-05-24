@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "start": "encore dev --watch",
+    "dev": "encore dev",
+    "prod": "encore production"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.20.1",
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.9.0",
+    "popper.js": "^1.14.3",
+    "sass-loader": "^7.0.1",
+    "webpack-notifier": "^1.6.0"
+  },
+  "dependencies": {
+    "open-iconic": "^1.1.1"
+  }
+}

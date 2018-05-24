@@ -76,3 +76,9 @@ Enjoy!
 [14]: https://symfony.com/doc/current/setup/built_in_web_server.html
 [15]: https://symfony.com/doc/current/setup.html
 # forget-me-not
+
+## Front-end
+
+- `$ cd web`
+- `$ yarn` Install npm dependencies
+- `$ yarn start` Watch SASS updates

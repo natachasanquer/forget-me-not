@@ -94,6 +94,13 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="user")
      */
     private $articles;
+    
+    /**
+     * @var Conversation
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Conversation", mappedBy="user")
+     */
+    private $conversations;
 
     /**
      * @var boolean
@@ -541,5 +548,39 @@ class User implements UserInterface
      */
     public function addPoints(int $nbPoints){
         $this->points = $this->points + $nbPoints;
+    }
+
+    /**
+     * Add conversation
+     *
+     * @param \AppBundle\Entity\Conversation $conversation
+     *
+     * @return User
+     */
+    public function addConversation(\AppBundle\Entity\Conversation $conversation)
+    {
+        $this->conversations[] = $conversation;
+
+        return $this;
+    }
+
+    /**
+     * Remove conversation
+     *
+     * @param \AppBundle\Entity\Conversation $conversation
+     */
+    public function removeConversation(\AppBundle\Entity\Conversation $conversation)
+    {
+        $this->conversations->removeElement($conversation);
+    }
+
+    /**
+     * Get conversations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConversations()
+    {
+        return $this->conversations;
     }
 }

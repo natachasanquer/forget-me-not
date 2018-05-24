@@ -115,4 +115,28 @@ class Type
     {
         return $this->articles;
     }
+
+    /**
+     * Set points
+     *
+     * @param integer $points
+     *
+     * @return Type
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+
+        return $this;
+    }
+
+    /**
+     * Get points
+     *
+     * @return integer
+     */
+    public function getPoints()
+    {
+        return $this->points;
+    }
 }

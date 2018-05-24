@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "430fbfbeff470f35968bfbb095760ce7",
+    "content-hash": "7daea7e32ec56f6ea094aec220e0c279",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1705,16 +1705,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v6.4.2",
+            "version": "v6.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "d38739b67bfe601e5ef3193567b0016f8989be65"
+                "reference": "0bae101401ed839a94d9e4d038f3e66bbed568f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/d38739b67bfe601e5ef3193567b0016f8989be65",
-                "reference": "d38739b67bfe601e5ef3193567b0016f8989be65",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/0bae101401ed839a94d9e4d038f3e66bbed568f4",
+                "reference": "0bae101401ed839a94d9e4d038f3e66bbed568f4",
                 "shasum": ""
             },
             "require": {
@@ -1756,7 +1756,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2018-03-17T21:35:08+00:00"
+            "time": "2018-04-11T20:55:54+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

@@ -37,7 +37,7 @@
         		</div>
         	</div>
         	
-            {% if app.user.estAccepte %}
+            {% if app.user and app.user.estAccepte %}
                 {% if article.user == app.user %}
                     <a class="btn" href="{{ path("article_modifier", {"slug": article.slug }) }}">Modifier</a>
                 {% else %}

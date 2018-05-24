@@ -30,7 +30,7 @@ class ActionController extends Controller
         $form->handleRequest($request);
 
         $slugify = new Slugify();
-        $slug=$slugify->slugify($article->getTitre() .'-'. $action->getId());
+        $slug=$slugify->slugify($article->getTitre() . $action->getDateDebut()->format('Y-m-d'));
         $action->setSlug($slug);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -117,8 +117,9 @@ class ActionController extends Controller
         $action->setType($type);
 
         $slugify = new Slugify();
-        $slug=$slugify->slugify($article->getTitre());
+        $slug=$slugify->slugify($article->getTitre().$action->getDateDebut()->format('Y-m-d'));
         $action->setSlug($slug);
+        $action->setCommentaire("Achat");
 
         #Enregistrement en base de donnees
         $em = $this->getDoctrine()->getManager();
@@ -127,7 +128,7 @@ class ActionController extends Controller
 
         $this->addFlash("success","Demande envoyée !");
 
-        return $this->render('action/action_location.html.twig');
+        return $this->render('action/action_achat.html.twig',compact("action"));
     }
 
     public function validationAction($slug, $etat){

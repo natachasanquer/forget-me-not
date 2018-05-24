@@ -6,12 +6,9 @@ use AppBundle\Entity\Article;
 use AppBundle\Entity\Image;
 use AppBundle\Form\ArticleEditType;
 use AppBundle\Form\ArticleType;
-use AppBundle\Form\ImageType;
 use Cocur\Slugify\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ArticleController extends Controller
 {

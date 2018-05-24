@@ -115,6 +115,13 @@ class Article
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="article")
      */
     private $images;
+    
+    /**
+     * @var Conversation
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Conversation", mappedBy="article")
+     */
+    private $conversations;
 
     /**
      * @var string

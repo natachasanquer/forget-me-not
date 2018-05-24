@@ -94,6 +94,13 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="user")
      */
     private $articles;
+    
+    /**
+     * @var Conversation
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Conversation", mappedBy="user")
+     */
+    private $conversations;
 
     /**
      * @var boolean

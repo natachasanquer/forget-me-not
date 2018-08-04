@@ -36,6 +36,14 @@ class Message
     private $text;
     
     /**
+     * @var string
+     *
+     * @ORM\Column(name="membre", type="string", length=500)
+     */
+    private $membre;
+    
+    
+    /**
      * @var Conversation
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Conversation", inversedBy="messages")
@@ -123,5 +131,29 @@ class Message
     public function getConversation()
     {
         return $this->conversation;
+    }
+
+    /**
+     * Set membre
+     *
+     * @param string $membre
+     *
+     * @return Message
+     */
+    public function setMembre($membre)
+    {
+        $this->membre = $membre;
+
+        return $this;
+    }
+
+    /**
+     * Get membre
+     *
+     * @return string
+     */
+    public function getMembre()
+    {
+        return $this->membre;
     }
 }

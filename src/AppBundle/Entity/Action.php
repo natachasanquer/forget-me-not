@@ -98,6 +98,15 @@ class Action
      */
     private $commentaire;
     
+    
+    /**
+     * @var Avis
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Avis",mappedBy="action")
+     */
+    private $avis;
+    
+    
     /**
      * Get id
      *
@@ -368,5 +377,46 @@ class Action
     public function getCommentaire()
     {
         return $this->commentaire;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->avis = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add avi
+     *
+     * @param \AppBundle\Entity\Avis $avi
+     *
+     * @return Action
+     */
+    public function addAvi(\AppBundle\Entity\Avis $avi)
+    {
+        $this->avis[] = $avi;
+
+        return $this;
+    }
+
+    /**
+     * Remove avi
+     *
+     * @param \AppBundle\Entity\Avis $avi
+     */
+    public function removeAvi(\AppBundle\Entity\Avis $avi)
+    {
+        $this->avis->removeElement($avi);
+    }
+
+    /**
+     * Get avis
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAvis()
+    {
+        return $this->avis;
     }
 }

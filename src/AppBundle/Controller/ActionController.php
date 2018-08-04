@@ -34,8 +34,6 @@ class ActionController extends Controller
         $action->setSlug($slug);
 
         if($form->isSubmitted() && $form->isValid()){
-
-
             $action->setUser($this->getUser());
             $action->setArticle($article);
             $action->setEstValide(false);
@@ -128,7 +126,7 @@ class ActionController extends Controller
 
         $this->addFlash("success","Demande envoyée !");
 
-        return $this->render('action/action_achat.html.twig',compact("action"));
+        return $this->render('default/home.html.twig',compact("action"));
     }
 
     public function validationAction($slug, $etat){
@@ -141,7 +139,6 @@ class ActionController extends Controller
 
         if($etat=='attente'){
             return $this->render('action/action_validation.html.twig', compact('action'));
-
         }
         elseif ($etat=='valide') {
             $action->setEstValide(true);

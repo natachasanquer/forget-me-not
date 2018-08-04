@@ -70,3 +70,13 @@ admin_home:
 paiement:
     path:   /paiement
     defaults: { _controller:  AppBundle:Paiement:paiement }
+
+#conversation
+conversation_demarrer:
+    path:   /conversation/{slugArticle}
+    defaults: { _controller:  AppBundle:Conversation:demarrer}
+    
+
+conversation_ajouter_message:
+    path:   /conversation/{idConversation}
+    defaults: { _controller:  AppBundle:Conversation:ajouter}

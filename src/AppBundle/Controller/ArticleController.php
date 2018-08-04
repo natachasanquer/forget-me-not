@@ -16,15 +16,14 @@ class ArticleController extends Controller
     {
         $user = $this->getUser();
         
-        $user->addPoints(10);
-        
         $article = new Article();
         $articleForm = $this->createForm(ArticleType::class,$article);
 
         $articleForm->handleRequest($request);
 
         if($articleForm->isSubmitted() && $articleForm->isValid()){
-
+            $user->addPoints($article->getType()->getPoints()/2);
+            
             // $file stores the uploaded PDF file
             $file = $articleForm['image']->getData();
 

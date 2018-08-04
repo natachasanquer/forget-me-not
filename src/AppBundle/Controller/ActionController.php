@@ -13,6 +13,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ActionController extends Controller
 {
+    /**
+     * Méthode permettant d'enregistrer une demande de location en BDD
+     * @param Request $request
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function locationAction(Request $request, $slug)
     {
         if(!$slug){
@@ -61,6 +67,12 @@ class ActionController extends Controller
 
     }
 
+    /**
+     * Méthode permettant d'enregistrer en BDD l'état des lieux du vêtement.
+     * @param Request $request
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function commencementAction(Request $request,$slug){
         if(!$slug){
             throw $this->createNotFoundException("L'action n'existe pas.");
@@ -90,6 +102,11 @@ class ActionController extends Controller
         ]);
     }
     
+    /**
+     * Méthode permettant d'enregitrer un achat.
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function achatAction($slug)
     {
 
@@ -129,6 +146,12 @@ class ActionController extends Controller
         return $this->render('default/home.html.twig',compact("action"));
     }
 
+    /**
+     * Méthode permettant d'accepter une location
+     * @param $slug
+     * @param $etat
+     * @return \Symfony\Component\HttpFoundation\Response|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function validationAction($slug, $etat){
         if(!$slug){
             throw $this->createNotFoundException("L'action n'existe pas.");
@@ -161,10 +184,6 @@ class ActionController extends Controller
 
             $this->addFlash("succes","Demande refusée !");
             return $this->redirectToRoute("user_details");
-
         }
-
-
     }
-
 }

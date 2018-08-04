@@ -11,6 +11,12 @@ use Doctrine\Tests\DBAL\Types\DateTest;
 
 class ConversationController extends Controller
 {
+    /**
+     * Méthode permettant de créer une instance de conversation entre un utilisateur et le propriétaire d'un vêtement.
+     * @param Request $request
+     * @param string $slugArticle
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function demarrerAction(Request $request, $slugArticle)
     {
         if(!$slugArticle){
@@ -37,6 +43,12 @@ class ConversationController extends Controller
         
     }
     
+    /**
+     * Méthode permettant d'ajuter un nouveau message.
+     * @param Request $request
+     * @param Conversation $conversation
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function ajouterMessageAction($request,$conversation){
         $texteMessage = $_POST['message'];
         $message = new Message();

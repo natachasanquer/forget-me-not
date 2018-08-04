@@ -9,12 +9,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AdminController extends Controller
 {
+    /**
+     * Méthode permettant a un administrateur de valider un article
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function articleAction($slug)
     {
         if(!$slug){
-            throw $this->createNotFoundException("L'idée n'existe pas.");
+            throw $this->createNotFoundException("L'article n'existe pas.");
         }
-
+        
         $repo = $this->getDoctrine()->getRepository(Article::class);
         $article = $repo->findOneBySlug($slug);
 
@@ -28,6 +33,11 @@ class AdminController extends Controller
 
     }
 
+    /**
+     * Méthode permettant à un administrateur d'accepter un utilisateur.
+     * @param User $membre
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function membreAction($membre)
     {
         if(!$membre){
@@ -47,6 +57,10 @@ class AdminController extends Controller
         return $this->redirectToRoute("admin_home");
     }
 
+    /**
+     * Méthode pour obtenir les articles et utilisateurs ajoutés et non acceptés.
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function homeAction()
     {
         $repoArticle = $this->getDoctrine()->getRepository(Article::class);

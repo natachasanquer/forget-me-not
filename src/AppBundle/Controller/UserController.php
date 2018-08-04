@@ -14,6 +14,12 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends Controller
 {
+    /**
+     * Méthode permettant d'enregistrer un nouvel utilisateur
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function createAction(Request $request,UserPasswordEncoderInterface $encoder)
     {
         $user=new User();
@@ -65,7 +71,12 @@ class UserController extends Controller
         ]);
     }
 
-
+    /**
+     * Méthode permettant la connection
+     * @param Request $request
+     * @param AuthenticationUtils $authUtils
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function connectAction(Request $request, AuthenticationUtils $authUtils)
     {
         // get the login error if there is one
@@ -80,6 +91,11 @@ class UserController extends Controller
         ));
     }
 
+    /**
+     * Méthode permettant d'obtenir la liste des articles d'un utilisateur
+     * Et les différentes demandes émises sur un article.
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function compteAction()
     {
         //Recuperer la liste des articles de l'utilisateur

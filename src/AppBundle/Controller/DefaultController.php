@@ -9,6 +9,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+    /**
+     * Méthode permettant d'afficher la page d'accueil.
+     * Récupère les articles
+     * Crée un formulaire de recherche d'article.
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function homeAction(Request $request)
     {
         $recherche = new Article();

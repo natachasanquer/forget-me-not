@@ -100,11 +100,11 @@ class Action
     
     
     /**
-     * @var Avis
+     * @var RetourAction
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Avis",mappedBy="action")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\RetourAction",mappedBy="action")
      */
-    private $avis;
+    private $retourAction;
     
     
     /**
@@ -418,5 +418,39 @@ class Action
     public function getAvis()
     {
         return $this->avis;
+    }
+
+    /**
+     * Add retourAction
+     *
+     * @param \AppBundle\Entity\RetourAction $retourAction
+     *
+     * @return Action
+     */
+    public function addRetourAction(\AppBundle\Entity\RetourAction $retourAction)
+    {
+        $this->retourAction[] = $retourAction;
+
+        return $this;
+    }
+
+    /**
+     * Remove retourAction
+     *
+     * @param \AppBundle\Entity\RetourAction $retourAction
+     */
+    public function removeRetourAction(\AppBundle\Entity\RetourAction $retourAction)
+    {
+        $this->retourAction->removeElement($retourAction);
+    }
+
+    /**
+     * Get retourAction
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRetourAction()
+    {
+        return $this->retourAction;
     }
 }

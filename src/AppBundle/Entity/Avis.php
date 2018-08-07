@@ -36,12 +36,26 @@ class Avis
     private $commentaire;
     
     /**
-     * @var Action
+     * @var RetourAction
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Action", inversedBy="avis")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\RetourAction", inversedBy="avis")
      *
      */
-    private $action;
+    private $retourAction;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="role", type="string", length=20)
+     */
+    private $role;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
 
 
     /**
@@ -124,5 +138,77 @@ class Avis
     public function getAction()
     {
         return $this->action;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return Avis
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Avis
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set retourAction
+     *
+     * @param \AppBundle\Entity\RetourAction $retourAction
+     *
+     * @return Avis
+     */
+    public function setRetourAction(\AppBundle\Entity\RetourAction $retourAction = null)
+    {
+        $this->retourAction = $retourAction;
+
+        return $this;
+    }
+
+    /**
+     * Get retourAction
+     *
+     * @return \AppBundle\Entity\RetourAction
+     */
+    public function getRetourAction()
+    {
+        return $this->retourAction;
     }
 }

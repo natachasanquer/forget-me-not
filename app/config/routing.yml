@@ -80,3 +80,13 @@ conversation_demarrer:
 conversation_ajouter_message:
     path:   /conversation/{idConversation}
     defaults: { _controller:  AppBundle:Conversation:ajouter}
+    
+
+#avis
+avis_ajouter:
+    path:   /avis/{idAction}
+    defaults: { _controller:  AppBundle:Avis:ajouter}
+    
+avis_liste:
+    path:   /avis/{idUtilisateur}
+    defaults: { _controller:  AppBundle:Avis:liste }

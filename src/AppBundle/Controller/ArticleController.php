@@ -3,7 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Avis;
 use AppBundle\Entity\Image;
+use AppBundle\Entity\RetourAction;
 use AppBundle\Form\ArticleEditType;
 use AppBundle\Form\ArticleType;
 use Cocur\Slugify\Slugify;
@@ -86,8 +88,31 @@ class ArticleController extends Controller
 
         $repo = $this->getDoctrine()->getRepository(Article::class);
         $article = $repo->findOneBySlug($slug);
+        
+        $avis = array();
+        $note = 0;
+        $compteurNote = 0;
+        $user = $article->getUser();
+        
+        $repoRetour = $this->getDoctrine()->getRepository(RetourAction::class);
+        $repoAvis = $this->getDoctrine()->getRepository(Avis::class);
+        
+        $retoursAction = $repoRetour->findBy([
+            "user_id" => $user->getId()
+        ]);
+        
+        foreach ($retoursAction as $retourAction) {
+            $avis = $repoAvis->findOneById($retourAction->getAvis()
+                ->getId());
+            $note += $avis->getNote();
+            $compteurNote ++;
+            
+        }
+        
+        $note = $note/$compteurNote;
+        
 
-        return $this->render('article/detail_article.html.twig', compact("article"));
+        return $this->render('article/detail_article.html.twig', compact("article","note"));
     }
 
     public function modifierAction(Request $request, $slug){

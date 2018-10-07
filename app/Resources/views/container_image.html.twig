@@ -5,32 +5,15 @@
     {% set hasLink = true %}
 {% endif %}
 
-<div class="card text-center">
-    {% if hasLink %}
-        <a href="{{ path("article_detail", {"slug": article.slug}) }}">
-            <img class="card-img" src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}" alt="Photo de \"{{ article.titre }}\"" class="card-img" />
-        </a>
-    {% else %}
-        <img class="card-img" src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}" alt="Photo de \"{{ article.titre }}\"" class="card-img" />
-    {% endif %}
+<div class="container-fluid" role="dialog">
+    <div class="article-detail">
+        <div class="row">
+            <div class="pictures col-md-6 text-center mb-2">
+                <div class="main-picture">
+                    <img src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}" class="img-fluid" style="width: 100%" alt="Photo de l'article" />
+                </div>
+            </div>
 
-    <div class="card-body">
-        {% if hasLink %}
-            <a href="{{ path("article_detail", {"slug": article.slug}) }}">
-                <h5 class="card-title">
-                    {{ article.titre }}
-                </h5>
-            </a>
-        {% else %}
-            <h5 class="card-title">
-                {{ article.titre }}
-            </h5>
-        {% endif %}
-        <p class="card-text">{{ article.taille.libelle }}</p>
-    </div>
-    {% if canAccept %}
-        <div class="card-footer">
-            <a href="{{ path("admin_acc_article", {"slug": article.slug}) }}">Accepter</a>
         </div>
-    {% endif %}
+    </div>
 </div>

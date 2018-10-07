@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+    <div class="w3-display-middle" style="white-space:nowrap;">
+        <span class="w3-center w3-padding-large w3-green w3-xlarge w3-wide w3-animate-opacity ">BOOK <span class="w3-hide-small">YOUR</span> CLOTHES</span>
+    </div>
+</div>
+<span>
     {{ form_start(form, {'attr': {'id': 'recherche'}}) }}
         <div class="form-row align-items-center">
             <div class="form-group col-md-3 col-lg-2">
@@ -28,13 +35,43 @@
         </div>
     {{ form_end(form) }}
 
-    <div id="articles" class="row">
+
+    <div class="w3-content w3-container">
         {% for article in articles  %}
-            <div class="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-2">
-                {{ include('container_image.html.twig') }}
+            {% if loop.index%4==1 %}
+                <div class="w3-row">
+            {% endif %}
+            <div class="w3-container w3-quarter container_img" data-toggle="modal" data-target="#{{ article.id }}">
+                <img src="{{ asset("images/articles/"~ article.images[0].urlImage ) }}"  style="width:100%" class="w3-hover-opacity" />
+                <h5 class="text-center">
+                    {{ article.titre }}
+                </h5>
             </div>
+            {% if loop.index%4==0 %}
+                </div>
+            {% endif %}
         {% endfor %}
+        </div>
     </div>
+
+    {% for article in articles  %}
+        <div class="modal fade" id="{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="detail_article" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                    <div class="modal-body">
+                        {{ include('article/detail_article.html.twig') }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
 
 {% endblock %}
 

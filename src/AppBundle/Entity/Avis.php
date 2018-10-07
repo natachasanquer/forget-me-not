@@ -38,7 +38,7 @@ class Avis
     /**
      * @var RetourAction
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\RetourAction", inversedBy="avis")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\RetourAction", mappedBy="avis")
      *
      */
     private $retourAction;

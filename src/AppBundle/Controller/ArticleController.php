@@ -34,7 +34,7 @@ class ArticleController extends Controller
             // $file stores the uploaded PDF file
             $file = $articleForm['image']->getData();
 
-            $fileName = $article->getTitre().$file->getClientOriginalName().'.'.$file->guessExtension();
+            $fileName = $article->getTitre().'.'.$file->guessExtension();
 
             $image = new Image();
             $image->setArticle($article);
@@ -50,7 +50,7 @@ class ArticleController extends Controller
 
             $article->setDateCreation(new \DateTime());
             $article->setUser($user);
-            $article->setEstAccepte(false);
+            $article->setEstAccepte(true);
             $article->setEstArchive(false);
 
             $slugify = new Slugify();

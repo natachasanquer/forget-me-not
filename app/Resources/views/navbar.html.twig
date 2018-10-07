@@ -1,43 +1,39 @@
-<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="{{ path('home') }}">Forget me not</a>
+<div class="w3-top">
+    <div class="w3-bar" id="myNavbar">
+        <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right " href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+            <i class="fa fa-bars"></i>
+        </a>
+        <!-- <a href="#home" class="w3-bar-item w3-button navbarlink"  >HOME</a> -->
+        <!-- <a href="#Vendre" class="w3-bar-item w3-button w3-hide-small navbarlink"> VENDRE</a> -->
+        <!-- <a href="Louer" class="w3-bar-item w3-button w3-hide-small navbarlink">LOUER</a>  -->
+        <!-- <a href="#contact" class="w3-bar-item w3-button w3-hide-small navbarlink"> CONTACT</a>  -->
+        {% if app.user %}
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-supported-content" aria-controls="navbar-supported-content" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbar-supported-content">
-        {% if app.user  %}
-            {% if app.user.estAccepte %}
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item{% if app.request.attributes.get('_route') == 'user_details' %} active{% endif %}">
-                        <a class="nav-link" href="{{ path('user_details') }}">Mon compte</a>
-                    </li>
-                    <li class="nav-item{% if app.request.attributes.get('_route') == 'article_add' %} active{% endif %}">
-                        <a class="nav-link" href="{{ path('article_add') }}">Ajouter un article</a>
-                    </li>
-                </ul>
-            {% endif %}
-            <ul class="navbar-nav">
-                {% if "ROLE_ADMIN" in app.user.roles %}
-                    <li class="nav-item{% if app.request.attributes.get('_route') == 'admin_home' %} active{% endif %}">
-                        <a class="nav-link" href="{{ path('admin_home') }}">Accès Admin</a>
-                    </li>
-                {% endif %}
-
-                <li class="nav-item{% if app.request.attributes.get('_route') == 'logout' %} active{% endif %}">
-                    <a class="nav-link" href="{{ path('logout') }}">Se déconnecter</a>
-                </li>
-            </ul>
+            <a href="{{ path('article_add') }}" class="w3-bar-item w3-button w3-hide-small w3-right navbarlink">Ajouter un article</a>
+            <a href="{{ path('logout') }}" class="w3-bar-item w3-button w3-hide-small w3-right navbarlink">Se déconnecter</a>
         {% else %}
-            <ul class="navbar-nav mr-auto"></ul>
-            <ul class="navbar-nav">
-                <li class="nav-item{% if app.request.attributes.get('_route') == 'user_create' %} active{% endif %}">
-                    <a class="nav-link" href="{{ path('user_create') }}">S'inscrire</a>
-                </li>
-                <li class="nav-item{% if app.request.attributes.get('_route') == 'connect' %} active{% endif %}">
-                    <a class="nav-link" href="{{ path('connect') }}">Se connecter</a>
-                </li>
-            </ul>
+            <a href="{{ path('connect') }}" class="w3-bar-item w3-button w3-hide-small w3-right navbarlink">Se connecter</a>
         {% endif %}
+
+        <a class="w3-bar-item w3-button w3-hide-small w3-center navbarlink " data-toggle="modal" data-target="#concept">Concept</a>
+        <a href="https://docs.google.com/forms/d/1B3OTaA00lOli5rbwFNieV4I6DzoNCFdSpZVNaQaV46Y/edit?usp=sharing" class="w3-bar-item w3-button w3-hide-small w3-right navbarlink ">S'inscrire</a>
     </div>
-</nav>
+
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+        <!-- <a href="#home" class="w3-bar-item w3-button navbarlink" onclick="toggleFunction()">HOME</a> -->
+        <!-- <a href="#Vendre" class="w3-bar-item w3-button navbarlink" onclick="toggleFunction()">VENDRE</a> -->
+        <!-- <a href="#Louer" class="w3-bar-item w3-button navbarlink" onclick="toggleFunction()">LOUER</a> -->
+        <!-- <a href="#contact" class="w3-bar-item w3-button navbarlink" onclick="toggleFunction()">CONTACT</a> -->
+        {% if app.user %}
+
+            <a href="{{ path('article_add') }}" class="w3-bar-item w3-button w3-hide-small w3-right navbarlink">Ajouter un article</a>
+            <a href="{{ path('logout') }}" class="w3-bar-item w3-button w3-hide-small w3-right navbarlink">Se déconnecter</a>
+        {% else %}
+            <a href="{{ path('connect') }}" class="w3-bar-item w3-button">Se connecter</a>
+        {% endif %}
+
+        <a class="w3-bar-item w3-button w3-hide-small w3-center navbarlink " data-toggle="modal" data-target="#concept">Concept</a>
+        <a href="https://docs.google.com/forms/d/1B3OTaA00lOli5rbwFNieV4I6DzoNCFdSpZVNaQaV46Y/edit?usp=sharing" class="w3-bar-item w3-button w3-hide-small w3-right navbarlink ">S'inscrire</a>
+    </div>
+</div>
